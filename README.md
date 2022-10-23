@@ -2,6 +2,8 @@
 
 Tiny sentence clusterization tool written in Python using HuggingFace Sentence Transformers and Euclidean distance for vector similarity measurement.
 
+Can be built with PyInstaller.
+
 ### Features
 
 - XLS files processing
