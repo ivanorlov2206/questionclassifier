@@ -11,6 +11,5 @@ if __name__ == "__main__":
                                                                                     'Default 0.33. For russian use '
                                                                                     '0.28')
     args = parser.parse_args()
-
     frontend: BasicFrontend = TkFrontend(classifier=ParaphraseClassifier(delta=args.delta))
     frontend.start()

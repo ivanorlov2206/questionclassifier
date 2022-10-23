@@ -38,7 +38,6 @@ class TkFrontend(BasicFrontend):
         self.mainLabelVar.set("Processing file...")
         data = proceedXLS(path, col)
         data = processStringList(data)
-        print(data)
         predictionResult = self.classifier.classify(data)
         newfile = tkinter.filedialog.asksaveasfilename(filetypes=[("HTML files", ".html")])
         if not newfile:

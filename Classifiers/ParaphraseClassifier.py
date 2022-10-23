@@ -18,7 +18,6 @@ class ParaphraseClassifier(BasicClassifier):
         if self.status != CLASSIFIER_READY:
             return None
         embeddings = self.model.encode(lines)
-        print(embeddings)
 
         nonVisitedSentenceNumbers = set(range(len(lines)))
         predictionGroups = []
@@ -30,12 +29,10 @@ class ParaphraseClassifier(BasicClassifier):
                 if j in nonVisitedSentenceNumbers and cosDistAndCheckDelta(embeddings[i], embeddings[j], self.delta):
                     nonVisitedSentenceNumbers.remove(j)
                     tempGroup.append((j, lines[j]))
-                print(lines[i], lines[j], cosDist(embeddings[i], embeddings[j]))
             if len(tempGroup) > 0:
                 predictionGroups.append(PredictionGroup(tempGroup))
         predictionGroups.sort(key=lambda x: x.length, reverse=True)
 
-        print(predictionGroups)
         return PredictionResult(predictionGroups)
 
     def classify(self, lines: list) -> PredictionResult:
