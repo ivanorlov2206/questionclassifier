@@ -5,7 +5,7 @@ def split(string):
     splitted = []
     tmp = ""
     for i in range(len(string)):
-        if i > 2 and "А" <= string[i] <= "Я" and (
+        if i > 2 and ("А" <= string[i] <= "Я" or "A" <= string[i] <= 'Z') and (
                 (string[i - 1] == " " and string[i - 2] in [',', '?']) or string[i - 1] in [',', '?']):
             splitted.append(tmp)
             tmp = string[i]
@@ -26,7 +26,7 @@ def processStringList(strs: list) -> list:
     for i in range(len(lines)):
         if 'і' in lines[i]:
             lines[i] = ""
-        lines[i] = re.sub('[^а-яА-Яё ]+', ' ', lines[i])
+        lines[i] = re.sub('[^а-яА-Яёa-zA-Z ]+', ' ', lines[i])
         lines[i] = ' '.join([x for x in lines[i].split(' ') if x.rstrip() != ""])
         if len(lines[i]) < 10:
             lines[i] = ""

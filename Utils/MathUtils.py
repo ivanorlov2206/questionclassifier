@@ -1,5 +1,6 @@
 import numpy as np
 
+alpha = 0.00001
 
 def eucl(a, b):
     delta = 1.2
@@ -7,7 +8,7 @@ def eucl(a, b):
 
 
 def cosDistAndCheckDelta(a, b, delta):
-    return 1 - delta < cosDist(a, b) <= 1
+    return 1 - delta - alpha < cosDist(a, b) <= 1 + alpha
 
 
 def cosDist(a, b):
